@@ -1,0 +1,13 @@
+Score: 80/100  Grade: B
+
+  SPF:   PUBLISHED
+         v=spf1 redirect=_spf.google.com
+  DMARC: PUBLISHED (p=none)
+         v=DMARC1; p=none; sp=quarantine; rua=mailto:mailauth-reports@google.com
+  DKIM:  PUBLISHED
+         selector '20161025' (key length unknown)
+  MX:    alt1.gmail-smtp-in.l.google.com, alt2.gmail-smtp-in.l.google.com, alt3.gmail-smtp-in.l.google.com, alt4.gmail-smtp-in.l.google.com, gmail-smtp-in.l.google.com
+
+Findings (2):
+  [MEDIUM] SPF ends in ~all (softfail) via redirect to _spf.google.com. Use -all for strict enforcement once mail flow is verified.
+  [MEDIUM] DMARC policy is p=none (monitor only): spoofed mail is still delivered. Move to quarantine, then reject.
